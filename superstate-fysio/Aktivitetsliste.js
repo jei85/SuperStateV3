@@ -9,17 +9,20 @@ function Aktivitetsliste(){
             "aktiviter":[
                 {
                     "id":1,
-                    "navn":"situps"
+                    "navn":"situps",
+                    "valgt":true
                 }
                 ,
                 {
                     "id":2,
-                    "navn":"spensthopp"
+                    "navn":"spensthopp",
+                    "valgt":false
                 }
                 ,
                 {
                     "id":3,
-                    "navn":"knebøy"
+                    "navn":"knebøy",
+                    "valgt":false
                 }
             ]
         };
@@ -33,6 +36,10 @@ function Aktivitetsliste(){
 
     this.hentAlle = function(){
         return _this.alleAktiviteter;
+    };
+
+    this.hentValgt = function(){
+        return _this.valgt;
     };
 
     this.filtrer = function(c){

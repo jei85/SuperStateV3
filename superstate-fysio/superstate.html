@@ -111,10 +111,27 @@
 
                 var overskriftDiv = document.createElement('div');
                 overskriftDiv.className = i == 0 ? 'valgt': 'aktivitet';
+                overskriftDiv.className = alleAktiviteter[i].valgt ? 'valgt': 'aktivitet';
+
                 overskriftDiv.innerHTML = alleAktiviteter[i].navn;
                 aktiviteter.appendChild(overskriftDiv);
             }
         };
+
+        function setValgtAktivitet(){
+
+            ///TODO: temp - neste nedover
+
+            var listeLengde = aktivitetsliste.hentAlle().length;
+            var valgt = aktivitetsliste.hentValgt();
+
+            var nesteValgt = valgt++;
+            if(nesteValgt < listeLengde){
+                ///sette nesteValgt til valgt
+                ///sette valgt til ikke valgt
+            }
+
+        }
 
     })
 </script>
