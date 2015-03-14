@@ -18,8 +18,8 @@ namespace SuperState01
 
 		private SuperState01ViewController parentController;
 
-
-
+		public bool isPlaying = false;
+		public List<int> removedItems = new List<int>();
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 
@@ -64,7 +64,7 @@ namespace SuperState01
 		void PlayAudio (string fileName)
 		{
 
-
+			isPlaying = true;
 			bool IDoNotExist = false;
 			if (!System.IO.File.Exists (fileName)) {
 				//enter
@@ -93,6 +93,7 @@ namespace SuperState01
 					parentController.player = null;
 				} );
 			}
+			isPlaying = false;
 		}
 
 
@@ -104,7 +105,21 @@ namespace SuperState01
 		*/
 		public override string TitleForFooter (UITableView tableView, int section)
 		{
-			return "123";
+			return "";
+		}
+
+		public override UITableViewCellEditingStyle EditingStyleForRow (UITableView tableView, NSIndexPath indexPath)
+		{
+			return UITableViewCellEditingStyle.None;
+			// NOTE: Don't call the base implementation on a Model class
+			// see http://docs.xamarin.com/guides/ios/application_fundamentals/delegates,_protocols,_and_events
+			//throw new NotImplementedException ();
+		}
+
+		public override string TitleForDeleteConfirmation (UITableView tableView, NSIndexPath indexPath)
+		{   // Optional - default text is 'Delete'
+			int noOfDeletedItems = removedItems.Count;
+			return "Fullfør (" + noOfDeletedItems + " fullførte øvelser)";
 		}
 
 		public override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editStyle, NSIndexPath indexPath)
@@ -121,7 +136,7 @@ namespace SuperState01
 
 				//det legges i viewet, men viewet oppdateres ikke
 
-
+				removedItems.Add (1);
 			}
 
 			//inserte i det andre viewet
@@ -163,9 +178,12 @@ namespace SuperState01
 			//this.tableData = new Dictionary<int, String> ()
 			//0, "Music"
 			this.tableData = new List<string> ();
+			tableData.Add ("Oppvarming");
 			tableData.Add ("Knebøy");
-			tableData.Add ("Pushups");
-			tableData.Add ("Situps");
+			tableData.Add ("Push-up");
+			tableData.Add ("Sit-up");
+			tableData.Add ("Crunches");
+			tableData.Add ("Benkpress");
 			this.exerciseSelected = this.tableData[1];
 			this.parentController = controller; 
 		}
@@ -173,10 +191,47 @@ namespace SuperState01
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
 
-			var abc = "";
-			PlayAudio ("mvp002.mp3");
-			//new UIAlertView("Row Selected", tableView[indexPath.Row], null, "OK", null).Show();
-			//tableView.DeselectRow (indexPath, true); // iOS convention is to remove the highlight
+
+
+				//KillAudioPlayer ();
+				if (indexPath.ToString() ==  "0")
+				{
+					if (isPlaying) //!IsAudioFinished(parentController.player, AVStatusEventArgs.Empty))
+					{
+						KillAudioPlayer ();
+					}
+				PlayAudio ("mvp002.mp3");
+				}
+				if (indexPath.ToString() ==  "1")
+				{
+					if (isPlaying) //!IsAudioFinished(parentController.player, AVStatusEventArgs.Empty))
+					{
+						KillAudioPlayer ();
+					}
+					PlayAudio ("mvp002.mp3");
+				}
+				if (indexPath.ToString() ==  "2")
+				{
+					if (isPlaying) //!IsAudioFinished(parentController.player, AVStatusEventArgs.Empty))
+					{
+						KillAudioPlayer ();
+					}
+					PlayAudio ("mvp002.mp3");
+				}
+				if (indexPath.ToString() ==  "3")
+				{
+					if (isPlaying) //!IsAudioFinished(parentController.player, AVStatusEventArgs.Empty))
+					{
+						KillAudioPlayer ();
+					}
+					PlayAudio ("mvp002.mp3");
+				}
+					//new UIAlertView("Row Selected", tableView[indexPath.Row], null, "OK", null).Show();
+				//tableView.DeselectRow (indexPath, true); // iOS convention is to remove the highlight
+
+
+
+		
 		}
 	}
 
@@ -205,6 +260,13 @@ namespace SuperState01
 	public partial class SuperState01ViewController : UIViewController
 	{
 
+		/*
+[[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"back_btn.png"]];
+    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"back_btn.png"]];
+
+		*/
+
+	
 		private MPMusicPlayerController musicPlayer;
 		private MPMediaPickerController mediaPicker;
 		public AVAudioPlayer player;
@@ -212,6 +274,8 @@ namespace SuperState01
 		public SuperState01ViewController (IntPtr handle) : base (handle)
 		{
 		}
+
+
 
 		public override void DidReceiveMemoryWarning ()
 		{
@@ -226,7 +290,17 @@ namespace SuperState01
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			
+
+			//myNavBar.SetBackgroundImage (UIImage.FromBundle ("superstate.jpg"), UIBarMetrics.Default); 
+			//myNavBar.SetBackgroundImage (UIImage.FromBundle ("superstate.jpg"), UIBarMetrics.CompactPrompt); 
+			myNavBar.SetBackgroundImage (UIImage.FromBundle ("superstateiconreDraw.jpg"), UIBarMetrics.CompactPrompt); 
+
+			//[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"btn-title-bar.png"] forBarMetrics:UIBarMetricsDefault];
+
+			//myNavBar.BackIndicatorImage = new UIImage(UIImage.FromFile("icon.png"));
+
+			//myNavBar.BackIndicatorImage = new UIImage(NSData.FromFile("icon.png"));
+
 			// Perform any additional setup after loading the view, typically from a nib.
 			this.tblView.Source = new TableSource (this);
 			//this.tblRemoved.Source = new CommonItems (this);
@@ -272,6 +346,40 @@ namespace SuperState01
 			player.Play();
 		}}
 */
+		public void SendComment(string text)
+		{
+			//base.ViewDidDisappear (animated);
+		}
+
+		partial void buttonDone_TouchUpInside (UIButton sender)
+		{
+			//throw new NotImplementedException ();
+			/*
+			UIAlertController alert = UIAlertController.Create ("Add Comments", "", UIAlertControllerStyle.Alert);
+
+			alert.AddAction (UIAlertAction.Create ("Save", UIAlertActionStyle.Default, action => {
+				SendComment(alert.TextFields[0].Text);
+			}));
+
+			alert.AddAction (UIAlertAction.Create ("Cancel", UIAlertActionStyle.Cancel, null));
+			alert.AddTextField ((field) => {
+				field.Placeholder = "Your Comment";
+			});
+
+*/
+
+			UIAlertView alert = new UIAlertView();
+			alert.Title = "Hvordan gikk økten?";
+			alert.AddButton("Submit");
+			alert.Message = "Beskriv progresjon:";
+			alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+			alert.Clicked += (object s, UIButtonEventArgs ev) => {
+				// handle click event here
+				// user input will be in alert.GetTextField(0).Text;
+			};
+
+			alert.Show();
+		}
 		#endregion
 	}
 }

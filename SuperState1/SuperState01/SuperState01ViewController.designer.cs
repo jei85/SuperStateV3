@@ -20,17 +20,29 @@ namespace SuperState01
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UINavigationBar myNavBar { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextView myTextView { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UITableView tblView { get; set; }
 
+		[Action ("buttonDone_TouchUpInside:")]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		partial void buttonDone_TouchUpInside (UIButton sender);
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (buttonDone != null) {
 				buttonDone.Dispose ();
 				buttonDone = null;
+			}
+			if (myNavBar != null) {
+				myNavBar.Dispose ();
+				myNavBar = null;
 			}
 			if (myTextView != null) {
 				myTextView.Dispose ();

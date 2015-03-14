@@ -1,14 +1,14 @@
 # Version: 8.6.0.51 (dfb682f)
-# [first argument, ignore] # /Users/evrykristiansand/Desktop/JEI1/SuperState01/SuperState1/SuperState01/bin/iPhoneSimulator/Debug/mtouch.exe
+# [first argument, ignore] # /Users/evrykristiansand/Desktop/GITREPO/SuperStateV3/SuperState1/SuperState01/bin/iPhoneSimulator/Debug/mtouch.exe
 /Library/Frameworks/Xamarin.iOS.framework/Versions/8.6.0.51/bin/mtouch-64 \
 	-sdkroot \
 	/Applications/Xcode.app/Contents/Developer \
 	--cache \
-	/Users/evrykristiansand/Desktop/JEI1/SuperState01/SuperState1/SuperState01/obj/iPhoneSimulator/Debug/mtouch-cache \
+	/Users/evrykristiansand/Desktop/GITREPO/SuperStateV3/SuperState1/SuperState01/obj/iPhoneSimulator/Debug/mtouch-cache \
 	--nomanifest \
 	--nosign \
 	-sim \
-	/Users/evrykristiansand/Desktop/JEI1/SuperState01/SuperState1/SuperState01/bin/iPhoneSimulator/Debug/SuperState01.app \
+	/Users/evrykristiansand/Desktop/GITREPO/SuperStateV3/SuperState1/SuperState01/bin/iPhoneSimulator/Debug/SuperState01.app \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/2.1/System.dll \
 	-r \
@@ -24,4 +24,4 @@
 	-targetver \
 	7.0 \
 	--abi=i386 \
-	/Users/evrykristiansand/Desktop/JEI1/SuperState01/SuperState1/SuperState01/bin/iPhoneSimulator/Debug/SuperState01.exe \
+	/Users/evrykristiansand/Desktop/GITREPO/SuperStateV3/SuperState1/SuperState01/bin/iPhoneSimulator/Debug/SuperState01.exe \
