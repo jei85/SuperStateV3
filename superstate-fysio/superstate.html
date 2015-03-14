@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+
+    <script src="Aktivitetsliste.js"></script>
+
+    <style>
+
+        .aktivitet{
+             background-color: aqua;
+             border-radius: 1em;
+         }
+
+        .valgt{
+            background-color: green;
+            border-radius: 1em;
+        }
+
+    </style>
+</head>
+<body>
+
+
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-4" id="treningsprogram">
+
+            Treningsprogram
+
+            (liste over valgte)
+
+        </div>
+
+        <div class="col-md-4">
+
+            Alle tilgjengelige aktiviteter
+
+            <input id="aktivitetFilter" type="text" />
+            <div id="alleAktiviteter"></div>
+
+        </div>
+        <div class="col-md-4" id="tilbakemeldinger">
+            Tilbakemelding fra bruker
+
+        </div>
+    </div>
+</div>
+
+<script>
+    jQuery(document).ready(function(){
+
+        console.log("J query er lastet");
+
+        var aktivitetsliste = new Aktivitetsliste();
+        aktivitetsliste.init();
+
+        oppdaterAktivitetsListe();
+
+        console.log("2");
+
+
+        $('#aktivitetFilter').on('keyup', function(e) {
+
+            console.log("Tastetrykk e:" + e);
+
+            if(e.which == 38 || e.keyCode == 38) {
+                console.log("38 OPP trykket - dersom aktiviteter i lista - velg neste oppover");
+            }else if (e.which == 40 || e.keyCode == 40) {
+                console.log("40 NED trykket - dersom aktiviteter i lista - velg neste nedover");
+            }else if (e.which == 32 || e.keyCode == 32) {
+                console.log("32 SPACE trykket - skift modus");
+            }
+            else if (e.which == 13 || e.keyCode == 13) {
+                console.log("Enter trykket - dersom det finnes en valgt aktivitet skal den legges over i treningsprogrammet");
+            }else{
+                var input = String.fromCharCode(e.keyCode);
+                console.log("input:" + input);
+
+                aktivitetsliste.filtrer(input);
+                oppdaterAktivitetsListe();
+
+            }
+        });
+
+        console.log("3");
+
+        function oppdaterAktivitetsListe(){
+
+            console.log("oppdaterAktivitetsListe");
+
+            var aktiviteter = document.getElementById("alleAktiviteter");
+
+            while (aktiviteter.firstChild) {
+                aktiviteter.removeChild(aktiviteter.firstChild);
+            }
+            var alleAktiviteter = aktivitetsliste.hentAlle();
+
+            for(var i = 0; i < alleAktiviteter.length; i++){
+
+                var overskriftDiv = document.createElement('div');
+                overskriftDiv.className = i == 0 ? 'valgt': 'aktivitet';
+                overskriftDiv.innerHTML = alleAktiviteter[i].navn;
+                aktiviteter.appendChild(overskriftDiv);
+            }
+        };
+
+    })
+</script>
+</body>
+</html>
