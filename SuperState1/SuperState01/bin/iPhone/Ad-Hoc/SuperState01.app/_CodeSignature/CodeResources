@@ -8,13 +8,17 @@
 		<data>
 		h4KgJgWpxdjfyoXM+WlZS2uDdqs=
 		</data>
+		<key>MainStoryboard.storyboardc/Info.plist</key>
+		<data>
+		Jmu6F/QDeWUyQljt5m/23hAkmcs=
+		</data>
 		<key>MainStoryboard.storyboardc/UIViewController-vXZ-lx-hvc.nib</key>
 		<data>
-		Tmg3nbPo4mQfMzwwtopZEZWcLFw=
+		jjIrF+j9C3PaLAJQAMZHAICriBI=
 		</data>
 		<key>MainStoryboard.storyboardc/vXZ-lx-hvc-view-kh9-bI-dsS.nib</key>
 		<data>
-		vHhvMOwTskCFBxcCbv3uB4YN3fw=
+		4VzS7yFxvvs4wUSgsiION14tYyk=
 		</data>
 		<key>NOTICE</key>
 		<data>
@@ -26,27 +30,51 @@
 		</data>
 		<key>SuperState01.exe</key>
 		<data>
-		aXPiuiR9e+Z7j+9HqIwa+gTTlTQ=
+		1+1BfxKGOfbsPaHobB5pCWBOOcM=
 		</data>
 		<key>System.dll</key>
 		<data>
-		r7mr5I3KDJzmuYHW7f50Q1JKI0s=
+		9NhyMhE/s96Cb/b7rEAwo0bWn+Y=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
 		35HFhCj+jFD42BEnGgU/Ka5lPSM=
 		</data>
+		<key>icon.png</key>
+		<data>
+		dgTru5jnsT7gk+briTJZ++egjNA=
+		</data>
 		<key>monotouch.dll</key>
 		<data>
-		W5RPz0157NC76+Xn07Pd2rweV+w=
+		1EDU3YErmBOgzr+BbHtcsaRCl0E=
 		</data>
 		<key>mscorlib.dll</key>
 		<data>
-		UXrdQuDzWlYjnAYbsvH9tHqOtxc=
+		1qTItnPF/VK7Krnf5XHRgaNU9Qc=
 		</data>
 		<key>mvp002.mp3</key>
 		<data>
 		bvb1PkBAVe9c3HRFnqo3FQTEu3U=
+		</data>
+		<key>silhouetteIco.jpeg</key>
+		<data>
+		MmTIAyfSEmtpcz3pvR8YUPSu60E=
+		</data>
+		<key>superstate.gif</key>
+		<data>
+		ysxXVXvm8tmcimG7Q+s9KCb+LvI=
+		</data>
+		<key>superstate.jpg</key>
+		<data>
+		8sxz33gq6aRT0IWWavZ0sfrAO5I=
+		</data>
+		<key>superstateicon-reDraw.png</key>
+		<data>
+		PenVlhMejcYfUAycA5XfFjt6mzc=
+		</data>
+		<key>superstateiconreDraw.jpg</key>
+		<data>
+		zjKd3yVBO07da7RHDpTre3NzNJo=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -55,13 +83,17 @@
 		<data>
 		h4KgJgWpxdjfyoXM+WlZS2uDdqs=
 		</data>
+		<key>MainStoryboard.storyboardc/Info.plist</key>
+		<data>
+		Jmu6F/QDeWUyQljt5m/23hAkmcs=
+		</data>
 		<key>MainStoryboard.storyboardc/UIViewController-vXZ-lx-hvc.nib</key>
 		<data>
-		Tmg3nbPo4mQfMzwwtopZEZWcLFw=
+		jjIrF+j9C3PaLAJQAMZHAICriBI=
 		</data>
 		<key>MainStoryboard.storyboardc/vXZ-lx-hvc-view-kh9-bI-dsS.nib</key>
 		<data>
-		vHhvMOwTskCFBxcCbv3uB4YN3fw=
+		4VzS7yFxvvs4wUSgsiION14tYyk=
 		</data>
 		<key>NOTICE</key>
 		<data>
@@ -73,41 +105,65 @@
 		</data>
 		<key>SuperState01.exe</key>
 		<data>
-		aXPiuiR9e+Z7j+9HqIwa+gTTlTQ=
+		1+1BfxKGOfbsPaHobB5pCWBOOcM=
 		</data>
 		<key>System.dll</key>
 		<data>
-		r7mr5I3KDJzmuYHW7f50Q1JKI0s=
+		9NhyMhE/s96Cb/b7rEAwo0bWn+Y=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
 		35HFhCj+jFD42BEnGgU/Ka5lPSM=
 		</data>
+		<key>icon.png</key>
+		<data>
+		dgTru5jnsT7gk+briTJZ++egjNA=
+		</data>
 		<key>monotouch.dll</key>
 		<data>
-		W5RPz0157NC76+Xn07Pd2rweV+w=
+		1EDU3YErmBOgzr+BbHtcsaRCl0E=
 		</data>
 		<key>mscorlib.dll</key>
 		<data>
-		UXrdQuDzWlYjnAYbsvH9tHqOtxc=
+		1qTItnPF/VK7Krnf5XHRgaNU9Qc=
 		</data>
 		<key>mvp002.mp3</key>
 		<data>
 		bvb1PkBAVe9c3HRFnqo3FQTEu3U=
+		</data>
+		<key>silhouetteIco.jpeg</key>
+		<data>
+		MmTIAyfSEmtpcz3pvR8YUPSu60E=
+		</data>
+		<key>superstate.gif</key>
+		<data>
+		ysxXVXvm8tmcimG7Q+s9KCb+LvI=
+		</data>
+		<key>superstate.jpg</key>
+		<data>
+		8sxz33gq6aRT0IWWavZ0sfrAO5I=
+		</data>
+		<key>superstateicon-reDraw.png</key>
+		<data>
+		PenVlhMejcYfUAycA5XfFjt6mzc=
+		</data>
+		<key>superstateiconreDraw.jpg</key>
+		<data>
+		zjKd3yVBO07da7RHDpTre3NzNJo=
 		</data>
 	</dict>
 	<key>rules</key>
 	<dict>
 		<key>.*</key>
 		<true/>
-		<key>Info.plist</key>
+		<key>^Info.plist$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
 			<real>10</real>
 		</dict>
-		<key>ResourceRules.plist</key>
+		<key>^ResourceRules.plist$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
@@ -119,26 +175,26 @@
 	<dict>
 		<key>.*</key>
 		<true/>
-		<key>Info.plist</key>
-		<dict>
-			<key>omit</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
-		</dict>
-		<key>ResourceRules.plist</key>
-		<dict>
-			<key>omit</key>
-			<true/>
-			<key>weight</key>
-			<real>100</real>
-		</dict>
 		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
 		<dict>
 			<key>nested</key>
 			<true/>
 			<key>weight</key>
 			<real>0.0</real>
+		</dict>
+		<key>^Info.plist$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>10</real>
+		</dict>
+		<key>^ResourceRules.plist$</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>100</real>
 		</dict>
 	</dict>
 </dict>

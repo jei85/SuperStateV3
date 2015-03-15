@@ -19,7 +19,7 @@
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/2.1/monotouch.dll \
 	-linksdkonly \
 	-sdk \
-	8.1 \
+	8.2 \
 	-targetver \
 	7.0 \
 	--abi=armv7 \
