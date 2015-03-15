@@ -84,15 +84,16 @@ function Aktivitetsliste(){
         console.log("filtrer funksjon: filtrer på c: " + c);
 
         //TODO: må endres til å takle flere bokstaver
+        this.init();
         _this.alleAktiviteter = _.filter(_this.alleAktiviteter, function(a){ return a.navn.charAt(0).toLowerCase() == c.toLowerCase()});
 
-        ///TODO: hva skal skje dersom valgt fjernes fra lista? (har et tall)
-        ///tallet beholdes og settes til aktivitetslistas lengde minus 1 dersom valgt er høyere!!
+        console.log(" _this.valgt: " +  _this.valgt);
+        console.log("this.alleAktiviteter.length: " +  this.alleAktiviteter.length);
 
-
-        if(_this.hentValgt() >= _this.alleAktiviteter.length){
-            _this.setValgt(_this.alleAktiviteter.length - 1);
+        if( _this.valgt >= this.alleAktiviteter.length){
+            this.setValgt(this.alleAktiviteter.length - 1);
         }
+
     };
 
 }
