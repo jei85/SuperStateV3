@@ -20,15 +20,15 @@ namespace SuperState01
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UINavigationBar myNavBar { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextView myTextView { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UITableView tblView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UINavigationBar thisNavBar { get; set; }
 
 		[Action ("buttonDone_TouchUpInside:")]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -40,10 +40,6 @@ namespace SuperState01
 				buttonDone.Dispose ();
 				buttonDone = null;
 			}
-			if (myNavBar != null) {
-				myNavBar.Dispose ();
-				myNavBar = null;
-			}
 			if (myTextView != null) {
 				myTextView.Dispose ();
 				myTextView = null;
@@ -51,6 +47,10 @@ namespace SuperState01
 			if (tblView != null) {
 				tblView.Dispose ();
 				tblView = null;
+			}
+			if (thisNavBar != null) {
+				thisNavBar.Dispose ();
+				thisNavBar = null;
 			}
 		}
 	}

@@ -20,10 +20,22 @@ namespace SuperState01
 
 		public bool isPlaying = false;
 		public List<int> removedItems = new List<int>();
+
+
+		//1: tar plutselig ikke swipe action lengre
+		//2: det er noe dust ifht tittelen som viser "title"
+		//3: burde gjøre noe med designet? buyttonen?
+
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
 		{
 
+
+		
 			int rowIndex = indexPath.Row;
+			//var cell = tableView.DequeueReusableCell (this.cellID) as CustomVegeCell;
+
+
+			//tar bort denne for å prøve noe lurt
 			UITableViewCell cell = tableView.DequeueReusableCell (this.cellID);
 			if (cell == null)
 				cell = new UITableViewCell (UITableViewCellStyle.Default, this.cellID);
@@ -97,6 +109,18 @@ namespace SuperState01
 		}
 
 
+		public void sssh ()
+		{
+			if (parentController.player != null)
+			{
+				parentController.player.Stop ();
+					parentController.player.FinishedPlaying -= HandleAudioFinished;
+					parentController.player.Dispose();
+					parentController.player = null;
+	
+			}
+			//isPlaying = false;
+		}
 		/*
 		public override string TitleForFooter2 (UITableView tableView, int section)
 		{
@@ -110,7 +134,7 @@ namespace SuperState01
 
 		public override UITableViewCellEditingStyle EditingStyleForRow (UITableView tableView, NSIndexPath indexPath)
 		{
-			return UITableViewCellEditingStyle.None;
+			return UITableViewCellEditingStyle.Delete;
 			// NOTE: Don't call the base implementation on a Model class
 			// see http://docs.xamarin.com/guides/ios/application_fundamentals/delegates,_protocols,_and_events
 			//throw new NotImplementedException ();
@@ -121,6 +145,13 @@ namespace SuperState01
 			int noOfDeletedItems = removedItems.Count;
 			return "Fullfør (" + noOfDeletedItems + " fullførte øvelser)";
 		}
+
+		public override bool CanEditRow(UITableView tableView, NSIndexPath indexPath)
+		{
+			return true;
+		}
+
+	
 
 		public override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editStyle, NSIndexPath indexPath)
 		{
@@ -188,85 +219,53 @@ namespace SuperState01
 			this.parentController = controller; 
 		}
 	
+
 		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 		{
-
-
-
-				//KillAudioPlayer ();
-				if (indexPath.ToString() ==  "0")
+							//KillAudioPlayer ();
+				if (indexPath.Item.ToString() ==  "0")
 				{
 					if (isPlaying) //!IsAudioFinished(parentController.player, AVStatusEventArgs.Empty))
 					{
-						KillAudioPlayer ();
+					sssh ();
 					}
 				PlayAudio ("mvp002.mp3");
 				}
-				if (indexPath.ToString() ==  "1")
+				if (indexPath.Item.ToString() ==  "1")
 				{
 					if (isPlaying) //!IsAudioFinished(parentController.player, AVStatusEventArgs.Empty))
 					{
-						KillAudioPlayer ();
+					sssh ();
 					}
 					PlayAudio ("mvp002.mp3");
 				}
-				if (indexPath.ToString() ==  "2")
+			if (indexPath.Item.ToString() ==  "2")
 				{
 					if (isPlaying) //!IsAudioFinished(parentController.player, AVStatusEventArgs.Empty))
 					{
-						KillAudioPlayer ();
+					sssh ();
 					}
 					PlayAudio ("mvp002.mp3");
 				}
-				if (indexPath.ToString() ==  "3")
+			if (indexPath.Item.ToString() ==  "3")
 				{
 					if (isPlaying) //!IsAudioFinished(parentController.player, AVStatusEventArgs.Empty))
 					{
-						KillAudioPlayer ();
+					sssh ();
 					}
 					PlayAudio ("mvp002.mp3");
 				}
 					//new UIAlertView("Row Selected", tableView[indexPath.Row], null, "OK", null).Show();
-				//tableView.DeselectRow (indexPath, true); // iOS convention is to remove the highlight
+				tableView.DeselectRow (indexPath, true); // iOS convention is to remove the highlight
 
-
-
-		
 		}
-	}
+
+}
 
 
-
-
-
-	public class ExerciseItem
-	{
-		public int exerciseID {
-			get;
-			set;
-		}
-		public int kilos {
-			get;
-			set;
-		}
-		public int noOfSet {
-			get;
-			set;
-		}
-		public List<string> songsOfExerCise { get; private set;}  
-
-	}
 
 	public partial class SuperState01ViewController : UIViewController
 	{
-
-		/*
-[[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"back_btn.png"]];
-    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"back_btn.png"]];
-
-		*/
-
-	
 		private MPMusicPlayerController musicPlayer;
 		private MPMediaPickerController mediaPicker;
 		public AVAudioPlayer player;
@@ -275,9 +274,7 @@ namespace SuperState01
 		{
 		}
 
-
-
-		public override void DidReceiveMemoryWarning ()
+				public override void DidReceiveMemoryWarning ()
 		{
 			// Releases the view if it doesn't have a superview.
 			base.DidReceiveMemoryWarning ();
@@ -291,21 +288,16 @@ namespace SuperState01
 		{
 			base.ViewDidLoad ();
 
-			//myNavBar.SetBackgroundImage (UIImage.FromBundle ("superstate.jpg"), UIBarMetrics.Default); 
-			//myNavBar.SetBackgroundImage (UIImage.FromBundle ("superstate.jpg"), UIBarMetrics.CompactPrompt); 
-			myNavBar.SetBackgroundImage (UIImage.FromBundle ("superstateiconreDraw.jpg"), UIBarMetrics.CompactPrompt); 
-
-			//[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"btn-title-bar.png"] forBarMetrics:UIBarMetricsDefault];
-
-			//myNavBar.BackIndicatorImage = new UIImage(UIImage.FromFile("icon.png"));
-
-			//myNavBar.BackIndicatorImage = new UIImage(NSData.FromFile("icon.png"));
+			//JEI TODO
+			//UITextAttributes myTextAttrib = new UITextAttributes();
+			//myTextView.Text = "";
+			thisNavBar.TopItem.Title = "";
+				thisNavBar.SetBackgroundImage (UIImage.FromBundle ("superstateiconreDraw.jpg"), UIBarMetrics.Default); 
 
 			// Perform any additional setup after loading the view, typically from a nib.
 			this.tblView.Source = new TableSource (this);
-			//this.tblRemoved.Source = new CommonItems (this);
-			//this.tblRemoved.Source =
-		
+
+			//this.alternativeView.Source = new TableSource (this);
 		}
 
 	
@@ -330,22 +322,6 @@ namespace SuperState01
 			base.ViewDidDisappear (animated);
 		}
 
-		//musical stuff
-		/*
-		bool IDoNotExist = false;
-		if (!System.IO.File.Exists (fileName)) {
-			//enter
-			IDoNotExist = true;
-		}
-		else{
-			var url = NSUrl.FromFilename(fileName);
-			//AVAudioPlayer player = AVAudioPlayer.FromUrl(url);	
-			player = AVAudioPlayer.FromUrl(url);	
-			player.FinishedPlaying += HandleAudioFinished; 
-			//(sender, e) => { player.Dispose(); };
-			player.Play();
-		}}
-*/
 		public void SendComment(string text)
 		{
 			//base.ViewDidDisappear (animated);
@@ -353,22 +329,13 @@ namespace SuperState01
 
 		partial void buttonDone_TouchUpInside (UIButton sender)
 		{
-			//throw new NotImplementedException ();
-			/*
-			UIAlertController alert = UIAlertController.Create ("Add Comments", "", UIAlertControllerStyle.Alert);
+			TableSource ts = new TableSource(this);
+			//if (ts.isPlaying) //!IsAudioFinished(parentController.player, AVStatusEventArgs.Empty))
+			//{
+				ts.sssh ();
+			//}
 
-			alert.AddAction (UIAlertAction.Create ("Save", UIAlertActionStyle.Default, action => {
-				SendComment(alert.TextFields[0].Text);
-			}));
-
-			alert.AddAction (UIAlertAction.Create ("Cancel", UIAlertActionStyle.Cancel, null));
-			alert.AddTextField ((field) => {
-				field.Placeholder = "Your Comment";
-			});
-
-*/
-
-			UIAlertView alert = new UIAlertView();
+						UIAlertView alert = new UIAlertView();
 			alert.Title = "Hvordan gikk økten?";
 			alert.AddButton("Submit");
 			alert.Message = "Beskriv progresjon:";
@@ -380,6 +347,9 @@ namespace SuperState01
 
 			alert.Show();
 		}
+
+
+
 		#endregion
 	}
 }
