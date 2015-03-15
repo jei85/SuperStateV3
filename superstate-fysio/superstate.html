@@ -14,46 +14,125 @@
     <script src="http://underscorejs.org/underscore-min.js"></script>
 
     <script src="Aktivitetsliste.js"></script>
+    <script src="Treningsprogram.js"></script>
+    <script src="Tilbakemelding.js"></script>
 
     <style>
 
+        *{
+            font-family: Arial, sans-serif;
+            color: #CCCCCC;
+        }
+        .knapp{
+            color: #3B6FD2;
+            background-color: #333333;
+            border-radius: 0.5em;
+            margin-top: 0.5em;
+            display: inline-block;
+            padding: 0.5em;
+        }
+
         .aktivitet{
-             background-color: aqua;
-             border-radius: 1em;
+             background-color: #666666;
+            border: solid 0.1em;
+            border-radius: 0.5em;
+            border-color: #333333;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            padding: 0.5em;
          }
 
         .valgt{
             background-color: green;
-            border-radius: 1em;
+            border-radius: 0.5em;
+            border: solid 0.1em;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            padding: 0.5em;
+        }
+        .content{
+            background-color: #666666;
+            padding-top: 2em;
+        }
+        .kommentar{
+            border: solid 0.1em;
+            border-radius: 0.5em;
+            border-color: #333333;
+            background-color: #666666;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            padding: 0.5em;
+        }
+        .overskrift{
+            font-size: 1.5em;
+            font-weight: bold;
+            padding-bottom: 0.5em;
+            color: #0D234A;
         }
 
+        .aktivitetTreningsprogram{
+            background-color: #666666;
+            border: solid 0.1em;
+            border-radius: 0.5em;
+            border-color: #333333;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            padding: 0.5em;
+            overflow: hidden;
+        }
+
+        .aktivitetSettOgRep{
+            float: right;
+            /*background-color: #FF0000;*/
+            padding:0.5em;
+            color: #3F74D4;
+        }
+        .aktivitetNavn{
+            float: left;
+            /*background-color: #FF00FF;*/
+            padding:0.5em;
+        }
+        .tilbakemelding{
+            margin-bottom: 1em;
+            display: inline-block;
+        }
+        #header{
+            background-color: #000000;
+        }
+
+        #aktivitetFilter{
+            color: #000000;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
-
+<div id="header"><img src="header.jpg"/> </div>
 
 <div class="content">
     <div class="row">
-        <div class="col-md-4" id="treningsprogram">
 
-            Treningsprogram
+        <div class="col-md-3">
+            <div class="overskrift">Kunde</div>
+            <div id="kunde">Ola Normann</div>
+            <div id="sendNyttProgram" class="knapp">Send nytt program</div>
+        </div>
 
-            (liste over valgte)
+        <div class="col-md-3">
+            <div class="overskrift">Treningsprogram</div>
+            <div id="treningsprogram"></div>
 
         </div>
 
-        <div class="col-md-4">
-
-            Alle tilgjengelige aktiviteter
-
+        <div class="col-md-3">
+            <div class="overskrift">Aktiviteter</div>
             <input id="aktivitetFilter" type="text" />
             <div id="alleAktiviteter"></div>
-
         </div>
-        <div class="col-md-4" id="tilbakemeldinger">
-            Tilbakemelding fra bruker
-
+        <div class="col-md-3">
+            <div class="overskrift">Logg</div>
+            <div id="tilbakemeldinger"></div>
         </div>
     </div>
 </div>
@@ -70,15 +149,17 @@
 
         console.log("2");
 
-
+        $('#aktivitetFilter').focus();
         $('#aktivitetFilter').on('keyup', function(e) {
 
             console.log("Tastetrykk e:" + e);
 
             if(e.which == 38 || e.keyCode == 38) {
                 console.log("38 OPP trykket - dersom aktiviteter i lista - velg neste oppover");
+                velgForrigeAktivitet();
             }else if (e.which == 40 || e.keyCode == 40) {
                 console.log("40 NED trykket - dersom aktiviteter i lista - velg neste nedover");
+                velgNesteAktivitet();
             }else if (e.which == 32 || e.keyCode == 32) {
                 console.log("32 SPACE trykket - skift modus");
             }
@@ -90,7 +171,6 @@
 
                 aktivitetsliste.filtrer(input);
                 oppdaterAktivitetsListe();
-
             }
         });
 
@@ -110,29 +190,127 @@
             for(var i = 0; i < alleAktiviteter.length; i++){
 
                 var overskriftDiv = document.createElement('div');
-                overskriftDiv.className = i == 0 ? 'valgt': 'aktivitet';
-                overskriftDiv.className = alleAktiviteter[i].valgt ? 'valgt': 'aktivitet';
-
+                overskriftDiv.className = i == aktivitetsliste.hentValgt() ? 'valgt': 'aktivitet';
                 overskriftDiv.innerHTML = alleAktiviteter[i].navn;
                 aktiviteter.appendChild(overskriftDiv);
             }
         };
 
-        function setValgtAktivitet(){
+
+        function velgNesteAktivitet(){
 
             ///TODO: temp - neste nedover
-
             var listeLengde = aktivitetsliste.hentAlle().length;
             var valgt = aktivitetsliste.hentValgt();
 
-            var nesteValgt = valgt++;
+            var nesteValgt = valgt + 1;
             if(nesteValgt < listeLengde){
-                ///sette nesteValgt til valgt
-                ///sette valgt til ikke valgt
+
+                console.log("skal sette valgt. nesteValgt: " + nesteValgt);
+                aktivitetsliste.setValgt(nesteValgt);
+                oppdaterAktivitetsListe();
             }
+        };
 
-        }
+        function velgForrigeAktivitet(){
+            var valgt = aktivitetsliste.hentValgt();
 
+            if(valgt!= 0){
+                var nesteValgt = valgt - 1;
+                console.log("skal sette valgt. nesteValgt: " + nesteValgt);
+                aktivitetsliste.setValgt(nesteValgt);
+                oppdaterAktivitetsListe();
+            }
+        };
+
+        var tilbakemeldingsliste = new Tilbakemelding();
+        tilbakemeldingsliste.init();
+
+        oppdaterTilbakemeldinger();
+
+        console.log("4");
+
+        function oppdaterTilbakemeldinger(){
+
+            console.log("oppdaterTilbakemeldinger");
+
+            var tilbakemeldinger = document.getElementById("tilbakemeldinger");
+
+            while (tilbakemeldinger.firstChild) {
+                tilbakemeldinger.removeChild(tilbakemeldinger.firstChild);
+            }
+            var alleTilbakemeldinger = tilbakemeldingsliste.hentTilbakemeldinger();
+
+            for(var i = 0; i < alleTilbakemeldinger.length; i++){
+
+                var rating = alleTilbakemeldinger[i].rating;
+                var ratingDiv = document.createElement('div');
+
+                for(var j = 0; j < 5; j++){
+                    if(j < rating){
+                        var stjerne = document.createElement('img');
+                        stjerne.setAttribute("src", "star.png");
+                        stjerne.setAttribute("height", "25");
+                        stjerne.setAttribute("width", "25");
+                        ratingDiv.appendChild(stjerne);
+                    }
+                }
+
+                var kommentarDiv = document.createElement('div');
+                kommentarDiv.className = 'kommentar';
+                kommentarDiv.innerHTML = alleTilbakemeldinger[i].kommentar;
+
+
+                var tilbakemeldingDiv = document.createElement('div');
+                tilbakemeldingDiv.className = 'tilbakemelding';
+
+                tilbakemeldingDiv.appendChild(ratingDiv);
+                tilbakemeldingDiv.appendChild(kommentarDiv);
+                tilbakemeldinger.appendChild(tilbakemeldingDiv);
+            }
+        };
+        console.log("5");
+
+        var aktivitetsListe = new Treningsprogram();
+        aktivitetsListe.init();
+
+        oppdaterTreningsprogram();
+
+        console.log("6");
+
+        function oppdaterTreningsprogram(){
+
+            console.log("oppdaterTreningsprogram");
+
+            var treningsprogram = document.getElementById("treningsprogram");
+
+            while (treningsprogram.firstChild) {
+                treningsprogram.removeChild(treningsprogram.firstChild);
+            }
+            var alleAktiviteter = aktivitetsListe.hentProgram();
+
+
+
+            for(var i = 0; i < alleAktiviteter.length; i++){
+
+                var aktivitetDiv = document.createElement('div');
+                aktivitetDiv.className = 'aktivitetTreningsprogram';
+
+                var repDiv = document.createElement('div');
+                repDiv.className = 'aktivitetSettOgRep';
+                repDiv.innerHTML = alleAktiviteter[i].sett + ' X ' + alleAktiviteter[i].repitisjoner;
+
+                var navnDiv = document.createElement('div');
+                navnDiv.className = 'aktivitetNavn';
+                navnDiv.innerHTML = alleAktiviteter[i].navn;
+
+                aktivitetDiv.appendChild(repDiv);
+                aktivitetDiv.appendChild(navnDiv);
+                treningsprogram.appendChild(aktivitetDiv);
+            }
+        };
+
+        console.log("7");
     })
 </script>
 </body>
