@@ -15,12 +15,9 @@ namespace SuperState01
 		#region implemented abstract members of UITableViewSource
 
 		string footertxt = "";
-
 		private SuperState01ViewController parentController;
-
 		public bool isPlaying = false;
 		public List<int> removedItems = new List<int>();
-
 
 		//1: tar plutselig ikke swipe action lengre
 		//2: det er noe dust ifht tittelen som viser "title"
@@ -121,23 +118,10 @@ namespace SuperState01
 			}
 			//isPlaying = false;
 		}
-		/*
-		public override string TitleForFooter2 (UITableView tableView, int section)
-		{
-			return "";
-		}
-		*/
-		public override string TitleForFooter (UITableView tableView, int section)
-		{
-			return "";
-		}
 
 		public override UITableViewCellEditingStyle EditingStyleForRow (UITableView tableView, NSIndexPath indexPath)
 		{
 			return UITableViewCellEditingStyle.Delete;
-			// NOTE: Don't call the base implementation on a Model class
-			// see http://docs.xamarin.com/guides/ios/application_fundamentals/delegates,_protocols,_and_events
-			//throw new NotImplementedException ();
 		}
 
 		public override string TitleForDeleteConfirmation (UITableView tableView, NSIndexPath indexPath)
@@ -209,10 +193,10 @@ namespace SuperState01
 			//this.tableData = new Dictionary<int, String> ()
 			//0, "Music"
 			this.tableData = new List<string> ();
-			tableData.Add ("Oppvarming");
-			tableData.Add ("Knebøy");
+			//tableData.Add ("Oppvarming");
 			tableData.Add ("Push-up");
 			tableData.Add ("Sit-up");
+			tableData.Add ("Knebøy");
 			tableData.Add ("Crunches");
 			tableData.Add ("Benkpress");
 			this.exerciseSelected = this.tableData[1];
@@ -229,7 +213,7 @@ namespace SuperState01
 					{
 					sssh ();
 					}
-				PlayAudio ("mvp002.mp3");
+				PlayAudio ("Pushup.mp3");
 				}
 				if (indexPath.Item.ToString() ==  "1")
 				{
@@ -237,7 +221,7 @@ namespace SuperState01
 					{
 					sssh ();
 					}
-					PlayAudio ("mvp002.mp3");
+					PlayAudio ("Situp.mp3");
 				}
 			if (indexPath.Item.ToString() ==  "2")
 				{
@@ -245,7 +229,7 @@ namespace SuperState01
 					{
 					sssh ();
 					}
-					PlayAudio ("mvp002.mp3");
+					PlayAudio ("Pushup.mp3");
 				}
 			if (indexPath.Item.ToString() ==  "3")
 				{
@@ -253,7 +237,7 @@ namespace SuperState01
 					{
 					sssh ();
 					}
-					PlayAudio ("mvp002.mp3");
+					PlayAudio ("Situp.mp3");
 				}
 					//new UIAlertView("Row Selected", tableView[indexPath.Row], null, "OK", null).Show();
 				tableView.DeselectRow (indexPath, true); // iOS convention is to remove the highlight
@@ -296,7 +280,7 @@ namespace SuperState01
 
 			// Perform any additional setup after loading the view, typically from a nib.
 			this.tblView.Source = new TableSource (this);
-
+			//this.tblView.BackgroundColor = (UIImage.FromBundle ("superstateiconreDraw.jpg"), UIBarMetrics.Default); 
 			//this.alternativeView.Source = new TableSource (this);
 		}
 
@@ -335,12 +319,25 @@ namespace SuperState01
 				ts.sssh ();
 			//}
 
+
+			//jei
+			//UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 40, 40)];
+			//thisNavBar.SetBackgroundImage (UIImage.FromBundle ("superstateiconreDraw.jpg"), UIBarMetrics.Default); 
+
+
+
 						UIAlertView alert = new UIAlertView();
 			alert.Title = "Hvordan gikk økten?";
 			alert.AddButton("Submit");
+
 			alert.Message = "Beskriv progresjon:";
 			alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
 			alert.Clicked += (object s, UIButtonEventArgs ev) => {
+			
+				//UIImageView imgV = new UIImageView(new RectangleF(0f, 20f, this.View.Bounds.Width, this.View.Bounds.Height));
+				//imgV.Image.
+				//alert.Add(imgV);
+
 				// handle click event here
 				// user input will be in alert.GetTextField(0).Text;
 			};

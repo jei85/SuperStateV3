@@ -90,13 +90,6 @@
                                     <navigationItem title="Title" id="227"/>
                                 </items>
                             </navigationBar>
-                            <navigationBar contentMode="scaleToFill" id="252" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="122" y="68" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" id="253"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     </view>
@@ -105,7 +98,6 @@
                         <outlet property="buttonDone" destination="112" id="name-outlet-112"/>
                         <outlet property="myTextView" destination="143" id="name-outlet-143"/>
                         <outlet property="thisNavBar" destination="226" id="name-outlet-226"/>
-                        <outlet property="mynavbar2" destination="252" id="name-outlet-252"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
