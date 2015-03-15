@@ -26,6 +26,14 @@ namespace SuperState01
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UITableView tblView { get; set; }
 
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UINavigationBar thisNavBar { get; set; }
+
+		[Action ("buttonDone_TouchUpInside:")]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		partial void buttonDone_TouchUpInside (UIButton sender);
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (buttonDone != null) {
@@ -39,6 +47,10 @@ namespace SuperState01
 			if (tblView != null) {
 				tblView.Dispose ();
 				tblView = null;
+			}
+			if (thisNavBar != null) {
+				thisNavBar.Dispose ();
+				thisNavBar = null;
 			}
 		}
 	}

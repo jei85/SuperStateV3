@@ -88,6 +88,12 @@
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\mvp002.mp3" />
+    <BundleResource Include="Resources\icon.png" />
+    <BundleResource Include="Resources\silhouetteIco.jpeg" />
+    <BundleResource Include="Resources\superstate.gif" />
+    <BundleResource Include="Resources\superstate.jpg" />
+    <BundleResource Include="Resources\superstateicon-reDraw.png" />
+    <BundleResource Include="Resources\superstateiconreDraw.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
